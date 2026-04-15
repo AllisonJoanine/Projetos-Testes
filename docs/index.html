@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOMUNES — Movimento de Mulheres Negras de Sorocaba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0a06;
+      --bg2: #1a1008;
+      --bg3: #221408;
+      --gold: #c9922a;
+      --gold-light: #e8b84b;
+      --terracota: #8b3a1e;
+      --terracota-light: #c4522a;
+      --text: #f0e8d8;
+      --text-muted: #9a8870;
+      --border: #2a1e10;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,10,6,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--terracota-light), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      color: white; font-size: 1.1rem;
+    }
+    .nav-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: var(--text); }
+    .nav-sub { font-size: 0.7rem; color: var(--text-muted); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .btn-nav {
+      background: var(--terracota-light); color: white;
+      border: none; padding: 0.5rem 1.2rem; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-nav:hover { background: var(--terracota); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 4rem 5vw;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; right: -8%; top: 5%;
+      width: 52vw; height: 52vw; max-width: 700px; max-height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,146,42,0.12) 0%, rgba(139,58,30,0.08) 50%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,146,42,0.12); border: 1px solid rgba(201,146,42,0.25);
+      border-radius: 999px; padding: 6px 16px; font-size: 0.78rem;
+      color: var(--gold-light); margin-bottom: 1.5rem;
+    }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); display: inline-block; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold-light); }
+    .hero p { font-size: 1.05rem; color: var(--text-muted); max-width: 520px; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--terracota-light); color: white;
+      border: none; padding: 0.85rem 2rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: all .2s;
+    }
+    .btn-primary:hover { background: var(--terracota); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--gold-light);
+      border: 1.5px solid var(--gold); padding: 0.85rem 2rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: all .2s;
+    }
+    .btn-outline:hover { background: rgba(201,146,42,0.1); }
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-circle {
+      width: min(420px, 40vw); height: min(420px, 40vw);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, var(--bg3), var(--bg2));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-circle::before {
+      content: '';
+      position: absolute; inset: -2px; border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--gold) 0%, transparent 30%, var(--terracota-light) 60%, transparent 80%, var(--gold) 100%);
+      z-index: -1; opacity: 0.4;
+    }
+    .hero-circle-inner {
+      text-align: center; padding: 2rem;
+    }
+    .hero-circle-inner .year {
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900;
+      color: var(--gold); line-height: 1;
+    }
+    .hero-circle-inner .since { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+    .hero-circle-inner .city { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 0 5vw; }
+
+    /* ── SECTION ── */
+    section { padding: 5rem 5vw; }
+    .section-label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--text-muted); max-width: 600px; font-size: 1rem; }
+
+    /* ── FRENTES ── */
+    .frentes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .frente-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .frente-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .frente-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .frente-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      color: var(--text); margin-bottom: 0.6rem;
+    }
+    .frente-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── EVENTOS ── */
+    #eventos { background: var(--bg2); }
+    .eventos-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .evento-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+    .evento-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .evento-header {
+      padding: 1.5rem; border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--bg3), var(--bg2));
+    }
+    .evento-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 999px; margin-bottom: 0.8rem;
+    }
+    .evento-header h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem;
+      color: var(--text); margin-bottom: 0.4rem;
+    }
+    .evento-header p { font-size: 0.82rem; color: var(--text-muted); }
+    .evento-body { padding: 1.2rem 1.5rem; }
+    .evento-meta { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .evento-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); }
+    .evento-meta-item svg { flex-shrink: 0; color: var(--gold); }
+    .evento-vagas {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .vagas-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; margin: 0 10px; overflow: hidden; }
+    .vagas-fill { height: 100%; background: linear-gradient(to right, var(--terracota-light), var(--gold)); border-radius: 2px; }
+    .btn-inscricao {
+      display: block; width: 100%; text-align: center;
+      background: var(--terracota-light); color: white;
+      border: none; padding: 0.7rem; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-inscricao:hover { background: var(--terracota); }
+
+    /* ── FORMULÁRIO ── */
+    #inscricao { background: var(--bg); }
+    .form-container {
+      max-width: 680px; margin: 3rem auto 0;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-full { grid-column: 1 / -1; }
+    label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    input, select, textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: 'Lato', sans-serif; font-size: 0.9rem;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--gold);
+    }
+    select option { background: var(--bg3); }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; background: var(--terracota-light); color: white;
+      border: none; padding: 1rem; border-radius: 10px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      margin-top: 0.5rem; transition: background .2s;
+    }
+    .form-submit:hover { background: var(--terracota); }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+    }
+    .form-success .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(201,146,42,0.15); border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 1rem;
+    }
+    .form-success h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .form-success p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--bg3); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; text-align: center;
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif; font-size: 2.2rem;
+      font-weight: 900; color: var(--gold-light);
+    }
+    .stat-card .lbl { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+    .sobre-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+    .sobre-text strong { color: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 3rem 5vw 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.8rem; max-width: 300px; }
+    .footer-col h4 { font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 1rem; font-size: 0.95rem; }
+    .footer-col a { display: block; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; margin-bottom: 0.5rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem; max-width: 500px; width: 90%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.4rem; cursor: pointer; transition: color .2s;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal h2 { font-family: 'Playfair Display', serif; color: var(--text); margin-bottom: 0.5rem; }
+    .modal p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; }
+      .hero-visual { display: none; }
+      .nav-links { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .sobre-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">M</div>
+    <div>
+      <div class="nav-name">MOMUNES</div>
+      <div class="nav-sub">Movimento de Mulheres Negras</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#inscricao">Inscrições</a>
+    <a href="admin.html" class="btn-nav">Área Administrativa</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge"><span></span> Fundado em 1997 · Sorocaba, SP</div>
+    <h1>Movimento de <em>Mulheres Negras</em> de Sorocaba</h1>
+    <p>O MOMUNES é uma organização da sociedade civil sem fins lucrativos que atua no enfrentamento ao racismo, sexismo e desigualdades sociais, valorizando a identidade afro-brasileira e prestando apoio a mulheres e crianças em vulnerabilidade.</p>
+    <div class="hero-btns">
+      <a href="#eventos" class="btn-primary">Ver Eventos e Atividades</a>
+      <a href="#sobre" class="btn-outline">Conhecer o MOMUNES</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-circle">
+      <div class="hero-circle-inner">
+        <div class="since">Desde</div>
+        <div class="year">1997</div>
+        <div class="city">Sorocaba, SP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FRENTES DE ATUAÇÃO -->
+<section id="frentes">
+  <div class="section-label">Frentes de Atuação</div>
+  <h2 class="section-title">Como o MOMUNES atua</h2>
+  <p class="section-sub">Quatro pilares fundamentais que sustentam nossa missão de empoderar mulheres negras e transformar a sociedade.</p>
+  <div class="frentes-grid">
+    <div class="frente-card">
+      <div class="frente-icon" style="background:rgba(139,58,30,0.2);">🏠</div>
+      <h3>Acolhimento</h3>
+      <p>Através da Casa de Acolhimento Recomeçar, oferecemos moradia, assistência social, médica e psicológica para mulheres em situação de risco e vulnerabilidade.</p>
+    </div>
+    <div class="frente-card">
+      <div class="frente-icon" style="background:rgba(201,146,42,0.15);">📚</div>
+      <h3>Educação</h3>
+      <p>Mantemos creches com foco na valorização da cultura afro-brasileira e realizamos atividades educativas que fortalecem a identidade das crianças.</p>
+    </div>
+    <div class="frente-card">
+      <div class="frente-icon" style="background:rgba(196,82,42,0.15);">✊</div>
+      <h3>Empoderamento</h3>
+      <p>Promovemos projetos de igualdade de gênero e raça, além de oferecer cursos preparatórios e oficinas de geração de renda para mulheres.</p>
+    </div>
+    <div class="frente-card">
+      <div class="frente-icon" style="background:rgba(232,184,75,0.12);">🏛️</div>
+      <h3>Atuação Política</h3>
+      <p>Monitoramos políticas públicas e combatemos o racismo e a discriminação étnico-racial na região de Sorocaba e no estado de São Paulo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EVENTOS -->
+<section id="eventos">
+  <div class="section-label">Participe</div>
+  <h2 class="section-title">Eventos e Atividades</h2>
+  <p class="section-sub">Confira as próximas atividades abertas para inscrição e faça parte da nossa comunidade.</p>
+  <div class="eventos-grid">
+
+    <div class="evento-card">
+      <div class="evento-header">
+        <div class="evento-tag" style="background:rgba(139,58,30,0.25);color:#e8a87c;">Acolhimento</div>
+        <h3>Roda de Conversa — Saúde Mental da Mulher Negra</h3>
+        <p>Espaço de escuta, cuidado e troca de experiências sobre saúde mental.</p>
+      </div>
+      <div class="evento-body">
+        <div class="evento-meta">
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            28 de Abril, 2026 — 14h
+          </div>
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Casa Recomeçar, Sorocaba-SP
+          </div>
+        </div>
+        <div class="evento-vagas">
+          <span style="font-size:0.75rem;color:var(--text-muted)">12/20 vagas</span>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:60%"></div></div>
+          <span style="font-size:0.75rem;color:var(--gold)">8 restantes</span>
+        </div>
+        <a href="#inscricao" class="btn-inscricao" onclick="preencherEvento('Roda de Conversa — Saúde Mental da Mulher Negra')">Inscrever-se</a>
+      </div>
+    </div>
+
+    <div class="evento-card">
+      <div class="evento-header">
+        <div class="evento-tag" style="background:rgba(201,146,42,0.15);color:#e8b84b;">Empoderamento</div>
+        <h3>Oficina de Geração de Renda — Artesanato Afro</h3>
+        <p>Aprenda técnicas de artesanato inspiradas na cultura africana e afro-brasileira.</p>
+      </div>
+      <div class="evento-body">
+        <div class="evento-meta">
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            5 de Maio, 2026 — 9h às 17h
+          </div>
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Sede MOMUNES, Sorocaba-SP
+          </div>
+        </div>
+        <div class="evento-vagas">
+          <span style="font-size:0.75rem;color:var(--text-muted)">18/25 vagas</span>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:72%"></div></div>
+          <span style="font-size:0.75rem;color:var(--gold)">7 restantes</span>
+        </div>
+        <a href="#inscricao" class="btn-inscricao" onclick="preencherEvento('Oficina de Geração de Renda — Artesanato Afro')">Inscrever-se</a>
+      </div>
+    </div>
+
+    <div class="evento-card">
+      <div class="evento-header">
+        <div class="evento-tag" style="background:rgba(232,184,75,0.12);color:#c9922a;">Educação</div>
+        <h3>Curso Preparatório — Acesso ao Ensino Superior</h3>
+        <p>Preparação para vestibulares e ENEM com foco em estudantes negras e negros.</p>
+      </div>
+      <div class="evento-body">
+        <div class="evento-meta">
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Início: 10 de Maio, 2026
+          </div>
+          <div class="evento-meta-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Online + Presencial, Sorocaba-SP
+          </div>
+        </div>
+        <div class="evento-vagas">
+          <span style="font-size:0.75rem;color:var(--text-muted)">5/30 vagas</span>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:17%"></div></div>
+          <span style="font-size:0.75rem;color:var(--gold)">25 restantes</span>
+        </div>
+        <a href="#inscricao" class="btn-inscricao" onclick="preencherEvento('Curso Preparatório — Acesso ao Ensino Superior')">Inscrever-se</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FORMULÁRIO DE INSCRIÇÃO -->
+<section id="inscricao">
+  <div class="section-label">Participe</div>
+  <h2 class="section-title">Formulário de Inscrição</h2>
+  <p class="section-sub">Preencha o formulário abaixo para se inscrever em uma das nossas atividades. Entraremos em contato para confirmar sua participação.</p>
+
+  <div class="form-container">
+    <div id="form-area">
+      <form id="inscricao-form" onsubmit="enviarInscricao(event)">
+        <div class="form-grid">
+          <div>
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" placeholder="Seu nome completo" required />
+          </div>
+          <div>
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" placeholder="seu@email.com" required />
+          </div>
+          <div>
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" placeholder="(15) 99999-9999" />
+          </div>
+          <div>
+            <label for="atividade">Atividade de interesse *</label>
+            <select id="atividade" required>
+              <option value="">Selecione uma atividade</option>
+              <option value="Roda de Conversa — Saúde Mental da Mulher Negra">Roda de Conversa — Saúde Mental</option>
+              <option value="Oficina de Geração de Renda — Artesanato Afro">Oficina de Geração de Renda</option>
+              <option value="Curso Preparatório — Acesso ao Ensino Superior">Curso Preparatório ENEM/Vestibular</option>
+              <option value="Outra atividade">Outra atividade</option>
+            </select>
+          </div>
+          <div class="form-full">
+            <label for="mensagem">Mensagem ou observações</label>
+            <textarea id="mensagem" placeholder="Conte um pouco sobre você ou deixe alguma observação..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Enviar Inscrição</button>
+      </form>
+    </div>
+    <div class="form-success" id="form-success">
+      <div class="check">✓</div>
+      <h3>Inscrição realizada!</h3>
+      <p>Obrigada por se inscrever. Em breve entraremos em contato para confirmar sua participação na atividade.</p>
+      <p style="margin-top:1rem;font-size:0.8rem;">MOMUNES — Movimento de Mulheres Negras de Sorocaba</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-label">Nossa História</div>
+  <h2 class="section-title">Sobre o MOMUNES</h2>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <p>O <strong>MOMUNES (Movimento de Mulheres Negras de Sorocaba)</strong> é uma organização da sociedade civil sem fins lucrativos, fundada em 1997 em Sorocaba-SP por professoras negras comprometidas com a transformação social.</p>
+      <p>Atuamos no <strong>enfrentamento ao racismo, sexismo e desigualdades sociais</strong>, oferecendo acolhimento a mulheres em vulnerabilidade, educação infantil com recorte afro e promovendo a cultura afro-brasileira.</p>
+      <p>Nossa missão é valorizar a <strong>identidade afro-brasileira</strong> e prestar apoio a mulheres e crianças em vulnerabilidade, restabelecendo vínculos comunitários e construindo uma sociedade mais justa e igualitária.</p>
+    </div>
+    <div class="sobre-stats">
+      <div class="stat-card">
+        <div class="num">28+</div>
+        <div class="lbl">Anos de atuação</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">4</div>
+        <div class="lbl">Frentes de atuação</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1997</div>
+        <div class="lbl">Ano de fundação</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">SP</div>
+        <div class="lbl">Sorocaba, Brasil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+        <div class="nav-logo">M</div>
+        <div>
+          <div class="nav-name">MOMUNES</div>
+          <div class="nav-sub">Movimento de Mulheres Negras</div>
+        </div>
+      </div>
+      <p>Organização da sociedade civil sem fins lucrativos, fundada em 1997 em Sorocaba-SP. Atuando no enfrentamento ao racismo e na valorização da identidade afro-brasileira.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <a href="#sobre">Sobre o MOMUNES</a>
+      <a href="#frentes">Frentes de Atuação</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#inscricao">Inscrições</a>
+    </div>
+    <div class="footer-col">
+      <h4>Área Restrita</h4>
+      <a href="admin.html">Painel Administrativo</a>
+      <a href="admin.html">Gestão de Participantes</a>
+      <a href="admin.html">Gestão de Eventos</a>
+      <a href="admin.html">Relatórios</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 MOMUNES — Movimento de Mulheres Negras de Sorocaba. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  function preencherEvento(nome) {
+    const sel = document.getElementById('atividade');
+    if (sel) {
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === nome) { sel.selectedIndex = i; break; }
+      }
+    }
+  }
+
+  function enviarInscricao(e) {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const atividade = document.getElementById('atividade').value;
+    if (!nome || !email || !atividade) return;
+
+    // Simula envio
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+
+    // Scroll para o sucesso
+    document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
